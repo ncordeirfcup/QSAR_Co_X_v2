@@ -7,8 +7,8 @@ class testset_prediction():
       def fit(self):
           ypred=self.model.predict(self.X)
           cm1=confusion_matrix(self.y,ypred)
-          Sn = float(cm1[0,0])/(cm1[0,0]+cm1[0,1])
-          Sp=float(cm1[1,1])/(cm1[1,0]+cm1[1,1])
+          Sp = float(cm1[0,0])/(cm1[0,0]+cm1[0,1])
+          Sn=float(cm1[1,1])/(cm1[1,0]+cm1[1,1])
           Sn=Sn*100
           Sp=Sp*100
           acc=accuracy_score(self.y,ypred)*100
