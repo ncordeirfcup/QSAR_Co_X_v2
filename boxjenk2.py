@@ -30,7 +30,7 @@ class boxjenk():
           hi=ci.columns.values.tolist()
           dff=df[df.iloc[:,1]==1]
           dffs=dff.iloc[:,2:]
-          dff2=dffs.groupby(hi).mean()
+          dff2=dffs.groupby(hi).mean(numeric_only=True)
           dff4=pd.merge(df,dff2, on=hi, how='left',suffixes=('?', '!')).fillna(0)
           dff4.columns=dff4.columns.str.rstrip('?')
           dff4.columns=dff4.columns.str.rstrip('!')
@@ -89,4 +89,5 @@ class boxjenk():
           adx=adx.drop(['index'],axis=1)
           adtsx=pd.concat([dfts.iloc[:,0:2].reset_index(),adts],axis=1,join='outer')
           adtsx=adtsx.drop(['index'],axis=1)
+
           return adx,adtsx
